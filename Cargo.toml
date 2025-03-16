@@ -6,3 +6,20 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+esp-hal = { version = "0.16.0", features = ["esp32c6"] }
+esp-backtrace = { version = "0.15.1", features = ["esp32c6", "println", "panic-handler"] }
+esp-println = { version = "0.13.1", features = ["esp32c6"] }
+critical-section = "1.1.2"
+esp-storage = { version = "0.3.0", features = [ "esp32c6" ] }
+embedded-storage = "0.3.0"
+
+[profile.dev.package.esp-storage]
+opt-level = 3
+
+
+[target.riscv32imac-unknown-none-elf.dev-dependencies]
+# ESP32-C6
+esp-hal = { version = "0.16.0", features = ["esp32c6"] }
+esp-backtrace = { version = "0.15.1", features = ["esp32c6", "println", "panic-handler", "exception-handler"] }
+esp-println = { version = "0.13.1", features = [ "esp32c6" ] }
+
